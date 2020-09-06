@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import List from '../List';
 import './AddListButton.scss';
+import Badge from '../Badge';
 
-const AddListButton = () => {
-    const [visiblePopup, setVisiblePopup] = useState(false);
+const AddList = ({ colors }) => {
+    const [visiblePopup, setVisiblePopup] = useState(true); //Изменить на false
 
     return (
         <div className="add-list">
@@ -22,12 +23,19 @@ const AddListButton = () => {
                 ]}
             />
             {visiblePopup && <div className="add-list__popup">
-                <h1>123</h1>
+                <input className="field" type="text" placeholder="Название папки" />
+                <div className="add-list__popup-colors">
+                    {
+                        colors.map(color =>
+                            <Badge key={color.id} color={color.name} />)
+                    }
+                </div>
+                <button className="button">Добавить</button>
             </div>}
         </div>
     );
 };
 
-export default AddListButton;
+export default AddList;
 
 // https://youtu.be/PsQC6zOo3FI?t=4855
