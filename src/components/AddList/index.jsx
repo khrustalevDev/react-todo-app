@@ -38,4 +38,4 @@ const AddList = ({ colors }) => {
 
 export default AddList;
 
-// https://youtu.be/PsQC6zOo3FI?t=4855
+// https://youtu.be/PsQC6zOo3FI?t=6594
