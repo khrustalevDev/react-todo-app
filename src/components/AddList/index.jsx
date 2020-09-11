@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import List from '../List';
 import './AddListButton.scss';
 import Badge from '../Badge';
+import closeSvg from '../../assets/img/close.svg';
 
 const AddList = ({ colors }) => {
-    const [visiblePopup, setVisiblePopup] = useState(true); //Изменить на false
+    const [visiblePopup, setVisiblePopup] = useState(false);
+    const [selectedColor, selectColor] = useState(colors[0].id);
 
     return (
         <div className="add-list">
@@ -23,11 +25,18 @@ const AddList = ({ colors }) => {
                 ]}
             />
             {visiblePopup && <div className="add-list__popup">
+                <img src={closeSvg} alt='Close btn' className="add-list__popup-close-btn"/>
                 <input className="field" type="text" placeholder="Название папки" />
                 <div className="add-list__popup-colors">
                     {
                         colors.map(color =>
-                            <Badge key={color.id} color={color.name} />)
+                            (<Badge
+                                onClick={() => selectColor(color.id)}
+                                key={color.id}
+                                color={color.name}
+                                className={selectedColor === color.id && 'active'}
+                            />
+                            ))
                     }
                 </div>
                 <button className="button">Добавить</button>
@@ -38,4 +47,4 @@ const AddList = ({ colors }) => {
 
 export default AddList;
 
-// https://youtu.be/PsQC6zOo3FI?t=6594
+// https://youtu.be/PsQC6zOo3FI?t=7639
