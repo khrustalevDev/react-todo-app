@@ -25,7 +25,9 @@ const AddList = ({ colors }) => {
                 ]}
             />
             {visiblePopup && <div className="add-list__popup">
-                <img src={closeSvg} alt='Close btn' className="add-list__popup-close-btn"/>
+                <img
+                    onClick={() => setVisiblePopup(false)}
+                    src={closeSvg} alt='Close btn' className="add-list__popup-close-btn" />
                 <input className="field" type="text" placeholder="Название папки" />
                 <div className="add-list__popup-colors">
                     {
@@ -46,5 +48,3 @@ const AddList = ({ colors }) => {
 };
 
 export default AddList;
-
-// https://youtu.be/PsQC6zOo3FI?t=7639
